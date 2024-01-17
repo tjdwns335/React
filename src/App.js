@@ -1,20 +1,22 @@
 import React from 'react'
 
-export default function App() {
-  const number = 11;
-  const pTagStyle = {
-    color: 'red',
-  }
-  return (
-    <div className="test-class">
-      <p>안녕하세요 리엑트입니다.</p>
-      {/* 주석을 사용하는 방법입니다 */}
-      {/* 삼항 연사자를 사용해볼게요! */}
-      <p style={pTagStyle}>
-        {
-          number > 10 ? number + "은/는 10보다 크다" : number + "은/는 10보다 작다"
-        }
-      </p>
-    </div>
-  )
+// props를 통해 부모 -> 자식 데이터가 전달됐다.
+function Son(props) {
+  return <div>나는 {props.gfName}의 손자입니다.</div>
 }
+// 부모 -> 자식 정보를 전달했다!
+function Mother(props) {
+  const gfName = props.grandFatherName;
+  return <Son gfName={gfName} />
+}
+
+function GrandFather() {
+  const name = '산타할아버지'
+  return <Mother grandFatherName={name} />
+}
+
+function App() {
+  return <GrandFather />
+}
+
+export default App
