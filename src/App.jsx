@@ -12,6 +12,15 @@ function App() {
   const onPasswordChangeHandler = (event) => {
     setPassword(event.target.value);
   }
+  function PasswordChange(arr) {
+    let temp = '';
+    for (let i = 0; i < arr.length; i++) {
+      if (typeof arr === 'string') {
+        temp += '*';
+      }
+    }
+    return temp;
+  }
 
   return (
     <div>
@@ -28,8 +37,7 @@ function App() {
       />
       <br />
       <button onClick={function () {
-        password.map()
-        alert(`고개님이 입력하신 아이디는  ${id}  이며, 비밀번호는 ${password} 입니다.`);
+        alert(`고개님이 입력하신 아이디는  ${id}  이며, 비밀번호는 ${PasswordChange(password)} 입니다.`);
         setId('');
         setPassword('');
       }}>로그인</button>
