@@ -2,31 +2,19 @@ import React from "react";
 import 'App.css';
 
 const App = () => {
-  // const style = {
-  //   padding: "100px",
-  //   display: "flex",
-  //   gap: "12px",
-  // };
 
-  const squareStyle = {
-    width: "100px",
-    height: "100px",
-    border: "1px solid green",
-    borderRadius: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
+  const testArr = ['감자', '고구마', '오이', '가지', '옥수수'];
 
   return (
     <div className="app-style">
-      <div className="squareStyle">감자</div>
-      <div className="squareStyle">고구마</div>
-      <div className="squareStyle">오이</div>
-      <div className="squareStyle">가지</div>
-      <div className="squareStyle">옥수수</div>
+      {/* {testArr.map((item) => <div className="squareStyle">{item}</div>)} */}
+      {
+        testArr.filter(function (item) {
+          return item !== '오이'
+        })
+          .map((item) => <div className="squareStyle">{item}</div>)
+      }
     </div>
   );
 };
-
 export default App;
