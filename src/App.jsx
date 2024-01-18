@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "App.css";
+import Button from "components/Button";
+import User from "components/User";
 
 function App() {
   const [users, setUsers] = useState([
@@ -39,7 +41,7 @@ function App() {
         나이 :&nbsp;
         <input value={age} onChange={ageChangeHandler} />
         <br />
-        <button onClick={clickAddButtonHandler}>추가</button>
+        <Button clickAddButtonHandler={clickAddButtonHandler}>추가</Button>
       </div>
       <div className="app-style">
         {users.map(function (item) {
@@ -49,17 +51,10 @@ function App() {
               item={item}
               removeFunction={clickRemoveButtonHandler}
             />);
-        })};
+        })}
       </div>
     </div>
   );
 };
 
-const User = ({ item, removeFunction }) => {
-  return (
-    <div key={item.id} className="squareStyle">
-      {item.age} - {item.name}
-      <button onClick={() => removeFunction(item.id)}>x</button>
-    </div>)
-};
 export default App;
