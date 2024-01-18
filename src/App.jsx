@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 
 function App() {
-  const [obj, setObj] = useState({
-    name: 'joon',
-    age: '30',
-  });
+  const [count, setCount] = useState(0);
+
+  const plusCount = () => {
+    const newPlusCount = count + 1;
+    setCount(newPlusCount);
+  }
   return (
     <div>
-      <div>{obj.name}</div>
+      {count}
+      <br />
       <button onClick={() => {
-        obj.name = 'joon2';
-        const obj2 = { ...obj };
-        setObj(obj2);
-        // 새로운 객체를 만들어야 한다.
-        // setObj(obj);
-      }}>변경!</button>
-    </div >
+        const newCount = count - 1
+        setCount(newCount);
+      }}>-1</button>
+      <button onClick={plusCount}>+1</button>
+    </div>
   )
 }
 
