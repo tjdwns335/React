@@ -60,6 +60,6 @@ const User = ({ item, removeFunction }) => {
     <div key={item.id} className="squareStyle">
       {item.age} - {item.name}
       <button onClick={() => removeFunction(item.id)}>x</button>
-    </div>);
+    </div>)
 };
 export default App;
