@@ -1,7 +1,5 @@
-// src/App.js
 import React, { useState } from "react";
-// import Square from "./components/Square.js";
-import "App.css"; // 🔥 반드시 App.css 파일을 import 해줘야 합니다.
+import "App.css";
 
 function App() {
   const [users, setUsers] = useState([
@@ -15,10 +13,9 @@ function App() {
 
   const nameChangeHandler = (event) => { setName(event.target.value); };
   const ageChangeHandler = (event) => { setAge(event.target.value); };
+
+  // 추가 버튼 클릭
   const clickAddButtonHandler = () => {
-    // 1.새로운 형태의 이놈을 만든다.
-    // 이놈: { id: 1, age: 30, name: "송중기" },
-    // 2. 이놈을 배열에 더한다.
     const newUser = {
       id: users.length + 1,
       age,
@@ -26,6 +23,12 @@ function App() {
     }
     setUsers([...users, newUser]);
   };
+
+  // 삭제 버튼 클릭(x)
+  const clickRemoveButtonHandler = (id) => {
+    const newUsers = users.filter((users) => users.id !== id)
+    setUsers(newUsers);
+  }
 
   return (
     <div>
@@ -39,16 +42,24 @@ function App() {
         <button onClick={clickAddButtonHandler}>추가</button>
       </div>
       <div className="app-style">
-        {
-          users.map((item) =>
-          (<div key={item.id} className="squareStyle">
-            {item.age} - {item.name}
-          </div>)
-          )
-        }
+        {users.map(function (item) {
+          return (
+            <User
+              key={item.id}
+              item={item}
+              removeFunction={clickRemoveButtonHandler}
+            />);
+        })};
       </div>
     </div>
   );
-}
+};
 
+const User = ({ item, removeFunction }) => {
+  return (
+    <div key={item.id} className="squareStyle">
+      {item.age} - {item.name}
+      <button onClick={() => removeFunction(item.id)}>x</button>
+    </div>);
+};
 export default App;
