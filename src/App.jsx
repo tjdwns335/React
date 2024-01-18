@@ -49,7 +49,7 @@ function App() {
               item={item}
               removeFunction={clickRemoveButtonHandler}
             />);
-        })};
+        })}
       </div>
     </div>
   );
